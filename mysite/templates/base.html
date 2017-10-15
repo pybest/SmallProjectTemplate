@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+{% load staticfiles %}
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{{ template_fn }}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+    <!-- my css -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    {% block extra-style %}{% endblock %}
+
+</head>
+
+<body style="padding-top:90px;">
+
+<!-- first line MENU -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'home' %}">S i t e&nbsp;&nbsp;&nbsp;&nbsp;N a m e</a></li>
+
+            <li class="menu-item dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">Menu1<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'home' %}">sub-menu1</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{% url 'home' %}">sub-menu2</a></li>
+                </ul>
+            </li>
+
+            <li class="menu-item dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">Util<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div><!--/.container -->
+</nav><!--/.navbar -->
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+{% block footer %}{% endblock %}
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+{% block extra-script %}{% endblock %}
+
+</body>
+</html>
